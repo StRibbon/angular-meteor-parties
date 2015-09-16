@@ -1,0 +1,12 @@
+body {
+  background-color: rgba(0,0,0,.04);
+}
+
+#login-buttons {
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  display: inline;
+}
