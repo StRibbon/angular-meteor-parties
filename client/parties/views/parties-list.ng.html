@@ -32,6 +32,7 @@
   <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count">
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
+    <small class="text-danger">Posted by {{creator(party) | displayName}}</small>
     <button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">X</button>
 
     <div ng-show="$root.currentUser">
@@ -58,16 +59,13 @@
       </div>
     </div>
     <ul ng-if="!party.public">
-      Users who not responded:
-      <li ng-repeat="invitedUser in outstandingInvitations(party)">
+      <li ng-repeat="invitedUser in outstandingInvitations(party)"> Users who have not responded:
         {{ invitedUser | displayName }}
       </li>
     </ul>
     <div ng-if="party.public">
       Everyone is invited
     </div>
-
-    <p><small>Posted by {{creator(party) | displayName}}</small></p>
   </li>
 </ul>
 
